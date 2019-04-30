@@ -1,0 +1,53 @@
+service: tracking-api
+
+plugins:
+  - serverless-python-requirements
+  # - serverless-domain-manager
+  - serverless-stage-manager
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+  # customDomain:
+  #   domainName: ${self:custom.DOMAIN.${self:provider.stage}}
+  #   certificateName: '*.listenpricing.com'
+  #   basePath: ''
+  #   stage: ${self:provider.stage}
+  #   createRoute53Record: true
+  stages:
+    - dev
+    - stage
+    - prod
+  stage: ${opt:stage, self:provider.stage}
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):dev}
+  # DOMAIN:
+  #   dev: api-${self:provider.stage}.listenpricing.com
+  #   stage: api-${self:provider.stage}.listenpricing.com
+  #   prod: api.listenpricing.com
+
+package:
+  exclude:
+    - .git/**
+    - node_modules/**
+    - venv/**
+    - __pycache__/**
+    - requirements.txt
+    - package-lock.json
+    - package.json
+    - README.md
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: python3.6
+  stage: ${opt:stage,'dev'}
+
+functions:
+  monitoringCreate:
+    handler: src/functions/monitoring/create.create
+    events:
+      - http:
+          path: monitoring
+          method: get
+          cors: false
+          private: false
