@@ -49,11 +49,11 @@ provider:
     DB_PASSWORD: ${self:custom.environment.password}
 
 functions:
-  monitoringCreate:
+  createMonitoring:
     handler: src/functions/monitoring/create.create
     events:
       - http:
           path: monitoring
-          method: get
+          method: post
           cors: false
-          private: false
+          private: true
