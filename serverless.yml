@@ -41,6 +41,12 @@ provider:
   region: us-east-1
   runtime: python3.6
   stage: ${opt:stage,'dev'}
+  environment:
+    DB_NAME: ${self:custom.environment.db}
+    DB_HOST: ${self:custom.environment.host}
+    DB_PORT: ${self:custom.environment.port}
+    DB_USER: ${self:custom.environment.user}
+    DB_PASSWORD: ${self:custom.environment.password}
 
 functions:
   monitoringCreate:
