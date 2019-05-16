@@ -57,3 +57,11 @@ functions:
           method: post
           cors: false
           private: true
+  monitoringList:
+    handler: src/functions/monitoring/list._list
+    events:
+      - http:
+          path: monitoring/list
+          method: get
+          cors: false
+          private: true

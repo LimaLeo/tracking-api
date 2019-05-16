@@ -14,3 +14,12 @@ def create_monitoring(_name, _description, _rule_id, _user_id):
     result = monitoringGroup.save()
     pg_db.close()
     return result
+
+def monitoring_list(_user_id):
+    data = []
+    pg_db.connect()
+    monitoringGroup = MonitoringGroup.select().dicts()
+    for row in monitoringGroup:
+        data.append(row)
+    pg_db.close()
+    return data
