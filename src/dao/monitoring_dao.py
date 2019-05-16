@@ -1,6 +1,7 @@
 from peewee import *
 
 from src.model.tracking import MonitoringGroup
+from src.model.tracking import Rules
 from src.dao.connect import pg_db
 
 
@@ -18,7 +19,10 @@ def create_monitoring(_name, _description, _rule_id, _user_id):
 def monitoring_list(_user_id):
     data = []
     pg_db.connect()
-    monitoringGroup = MonitoringGroup.select().dicts()
+    monitoringGroup = MonitoringGroup.select(
+        MonitoringGroup.name,
+        MonitoringGroup.description,
+        Rules.description.alias('rule')).join(Rules).dicts()
     for row in monitoringGroup:
         data.append(row)
     pg_db.close()
