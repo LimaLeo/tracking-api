@@ -36,3 +36,29 @@ def monitoring_delete(id_group):
         pg_db.close()
     except(Exception):
         print("produto não encontrado!")
+
+def monitoring_update(id_group, name="", description="", rule_id="", user_id=""):
+    try:
+        pg_db.connect()
+        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == id_group)
+        if(name != ""):
+            monitoringGroup.name = name
+        if(description != ""):
+            monitoringGroup.description = description
+        if(rule_id != ""):
+            monitoringGroup.rule_id = rule_id
+        if(user_id != ""):
+            monitoringGroup.user_id = user_id
+        monitoringGroup.save()
+        pg_db.close()
+    except(Exception):
+        print("id não encontrado!")
+
+def monitoring_get_by_id(id_group):
+    data = []
+    pg_db.connect()
+    monitoringGroup = MonitoringGroup.select().where(MonitoringGroup.id_group == id_group).dicts()
+    for row in monitoringGroup:
+        data.append(row)
+    pg_db.close()
+    return data

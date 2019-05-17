@@ -75,3 +75,21 @@ functions:
           method: delete
           cors: false
           private: true
+
+  updateMonitoring:
+    handler: src/functions/monitoring/update.update
+    events:
+      - http:
+          path: monitoring
+          method: patch
+          cors: false
+          private: true
+
+  getByIdMonitoring:
+    handler: src/functions/monitoring/get_by_id.get_by_id
+    events:
+      - http:
+          path: monitoring
+          method: get
+          cors: false
+          private: true
