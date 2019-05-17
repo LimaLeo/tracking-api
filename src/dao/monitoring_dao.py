@@ -27,3 +27,12 @@ def monitoring_list(_user_id):
         data.append(row)
     pg_db.close()
     return data
+
+def monitoring_delete(id_group):
+    try:
+        pg_db.connect()
+        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == id_group)
+        monitoringGroup.delete_instance()
+        pg_db.close()
+    except(Exception):
+        print("produto não encontrado!")
