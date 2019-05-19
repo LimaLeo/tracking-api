@@ -14,6 +14,10 @@ def update(_event, _context):
     result  = monitoring_update(group_id, name, description, rule_id, user_id)
     response = {
             "statusCode": 200,
+            "headers": {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': True,
+            },
             "body": json.dumps(body)
         }
     return response

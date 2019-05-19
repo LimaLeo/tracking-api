@@ -12,6 +12,10 @@ def create(_event, _context):
     result  = create_monitoring(name, description, rule_id, user_id)
     response = {
             "statusCode": 200,
+            "headers": {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': True,
+            },
             "body": json.dumps(body)
         }
     return response

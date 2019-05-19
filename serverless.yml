@@ -55,7 +55,7 @@ functions:
       - http:
           path: monitoring
           method: post
-          cors: false
+          cors: true
           private: true
 
   monitoringList:
@@ -64,7 +64,7 @@ functions:
       - http:
           path: monitoring/list
           method: get
-          cors: false
+          cors: true
           private: true
 
   deleteMonitoring:
@@ -73,7 +73,7 @@ functions:
       - http:
           path: monitoring
           method: delete
-          cors: false
+          cors: true
           private: true
 
   updateMonitoring:
@@ -82,7 +82,7 @@ functions:
       - http:
           path: monitoring
           method: patch
-          cors: false
+          cors: true
           private: true
 
   getByIdMonitoring:
@@ -91,5 +91,5 @@ functions:
       - http:
           path: monitoring
           method: get
-          cors: false
+          cors: true
           private: true

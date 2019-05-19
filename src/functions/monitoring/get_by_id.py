@@ -9,6 +9,10 @@ def get_by_id(_event, _context):
     data  = monitoring_get_by_id(group_id)
     response = {
             "statusCode": 200,
+            "headers": {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': True,
+            },
             "body": json.dumps(data)
         }
     return response
