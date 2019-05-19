@@ -20,6 +20,7 @@ def monitoring_list(_user_id):
     data = []
     pg_db.connect()
     monitoringGroup = MonitoringGroup.select(
+        MonitoringGroup.id_group,
         MonitoringGroup.name,
         MonitoringGroup.description,
         Rules.description.alias('rule')).join(Rules).dicts()
