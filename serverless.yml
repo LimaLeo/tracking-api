@@ -93,3 +93,48 @@ functions:
           method: get
           cors: true
           private: true
+
+  createProduct:
+    handler: src/functions/products/create.create
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
+          private: true
+
+  productList:
+    handler: src/functions/products/list._list
+    events:
+      - http:
+          path: products/list
+          method: get
+          cors: true
+          private: true
+
+  deleteProduct:
+    handler: src/functions/products/delete.delete
+    events:
+      - http:
+          path: products
+          method: delete
+          cors: true
+          private: true
+
+  updateProduct:
+    handler: src/functions/products/update.update
+    events:
+      - http:
+          path: products
+          method: patch
+          cors: true
+          private: true
+
+  getByIdProduct:
+    handler: src/functions/products/get_by_id.get_by_id
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
+          private: true
