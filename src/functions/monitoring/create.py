@@ -1,6 +1,6 @@
 import json
 
-from src.dao.monitoring_dao import create_monitoring
+from src.dao.monitoring_dao import monitoring_create
 
 
 def create(_event, _context):
@@ -9,7 +9,7 @@ def create(_event, _context):
     description = body['description']
     rule_id = body['rule_id']
     user_id = body['user_id']
-    result  = create_monitoring(name, description, rule_id, user_id)
+    result  = monitoring_create(name, description, rule_id, user_id)
     response = {
             "statusCode": 200,
             "headers": {
