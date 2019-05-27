@@ -30,36 +30,36 @@ def monitoring_list(_user_id):
     pg_db.close()
     return data
 
-def monitoring_delete(id_group):
+def monitoring_delete(_id_group):
     try:
         pg_db.connect()
-        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == id_group)
+        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == _id_group)
         monitoringGroup.delete_instance()
         pg_db.close()
     except(Exception):
         print("produto não encontrado!")
 
-def monitoring_update(id_group, name="", description="", rule_id="", user_id=""):
+def monitoring_update(_id_group, _name="", _description="", _rule_id="", _user_id=""):
     try:
         pg_db.connect()
-        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == id_group)
-        if(name != ""):
-            monitoringGroup.name = name
-        if(description != ""):
-            monitoringGroup.description = description
-        if(rule_id != ""):
-            monitoringGroup.rule_id = rule_id
-        if(user_id != ""):
-            monitoringGroup.user_id = user_id
+        monitoringGroup = MonitoringGroup.get(MonitoringGroup.id_group == _id_group)
+        if(_name != ""):
+            monitoringGroup.name = _name
+        if(_description != ""):
+            monitoringGroup.description = _description
+        if(_rule_id != ""):
+            monitoringGroup.rule_id = _rule_id
+        if(_user_id != ""):
+            monitoringGroup.user_id = _user_id
         monitoringGroup.save()
         pg_db.close()
     except(Exception):
         print("id não encontrado!")
 
-def monitoring_get_by_id(id_group):
+def monitoring_get_by_id(_id_group):
     data = []
     pg_db.connect()
-    monitoringGroup = MonitoringGroup.select().where(MonitoringGroup.id_group == id_group).dicts()
+    monitoringGroup = MonitoringGroup.select().where(MonitoringGroup.id_group == _id_group).dicts()
     for row in monitoringGroup:
         data.append(row)
     pg_db.close()
