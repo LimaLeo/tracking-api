@@ -23,7 +23,7 @@ def monitoring_list(_user_id):
         MonitoringGroup.id_group,
         MonitoringGroup.name,
         MonitoringGroup.description,
-        Rules.description.alias('rule')).join(Rules).where(MonitoringGroup.user_id == _user_id).dicts()
+        MonitoringGroup.rule_id).join(Rules).where(MonitoringGroup.user_id == _user_id).dicts()
 
     for row in monitoringGroup:
         data.append(row)
