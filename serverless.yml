@@ -138,3 +138,12 @@ functions:
           method: get
           cors: true
           private: true
+
+  rulesList:
+    handler: src/functions/rules/list._list
+    events:
+      - http:
+          path: rules/list
+          method: get
+          cors: true
+          private: true
