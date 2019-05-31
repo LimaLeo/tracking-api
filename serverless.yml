@@ -147,3 +147,12 @@ functions:
           method: get
           cors: true
           private: true
+
+  createPrices:
+    handler: src/functions/prices/create.create
+    events:
+      - http:
+          path: prices
+          method: post
+          cors: true
+          private: true
