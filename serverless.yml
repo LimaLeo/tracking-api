@@ -148,6 +148,15 @@ functions:
           cors: true
           private: true
 
+  getMonitoringByRule:
+    handler: src/functions/rules/get_monitoring_by_rule.get_monitoring_by_rule
+    events:
+      - http:
+          path: monitoring/rules
+          method: get
+          cors: true
+          private: true
+
   createPrices:
     handler: src/functions/prices/create.create
     events:
