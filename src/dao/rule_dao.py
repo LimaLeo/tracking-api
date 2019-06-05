@@ -17,6 +17,7 @@ def rules_list():
     pg_db.close()
     return data
 
+
 def rules_get_monitoring_by_rule(_rule_name):
     data = []
     pg_db.connect()

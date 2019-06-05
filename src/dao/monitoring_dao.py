@@ -16,6 +16,7 @@ def monitoring_create(_name, _description, _rule_id, _user_id):
     pg_db.close()
     return result
 
+
 def monitoring_list(_user_id):
     data = []
     pg_db.connect()
@@ -31,6 +32,7 @@ def monitoring_list(_user_id):
     pg_db.close()
     return data
 
+
 def monitoring_delete(_id_group):
     try:
         pg_db.connect()
@@ -39,6 +41,7 @@ def monitoring_delete(_id_group):
         pg_db.close()
     except(Exception):
         print("produto não encontrado!")
+
 
 def monitoring_update(_id_group, _name="", _description="", _rule_id="", _user_id=""):
     try:
@@ -56,6 +59,7 @@ def monitoring_update(_id_group, _name="", _description="", _rule_id="", _user_i
         pg_db.close()
     except(Exception):
         print("id não encontrado!")
+
 
 def monitoring_get_by_id(_id_group):
     data = []

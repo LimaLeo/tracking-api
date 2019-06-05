@@ -29,6 +29,7 @@ def products_list(_group_id):
     pg_db.close()
     return data
 
+
 def products_delete(_id_product):
     try:
         pg_db.connect()
@@ -37,6 +38,7 @@ def products_delete(_id_product):
         pg_db.close()
     except(Exception):
         print("produto não encontrado!")
+
 
 def products_update(_id_product, _name="", _link="", _tag="", _group_id=""):
     try:

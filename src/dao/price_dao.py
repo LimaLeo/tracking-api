@@ -10,6 +10,7 @@ def insert_one(_value, _product_id):
                     )
     return prices.save()
 
+
 def prices_create(_prices):
     pg_db.connect()
     result = []
