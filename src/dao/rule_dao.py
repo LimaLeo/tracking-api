@@ -21,9 +21,9 @@ def rules_list():
 def rules_get_monitoring_by_rule(_rule_name):
     data = []
     pg_db.connect()
-    monitoringGroup = Rules.select(MonitoringGroup.id_group)\
+    rules = Rules.select(MonitoringGroup.id_group)\
         .join(MonitoringGroup).where(Rules.name == _rule_name).dicts()
-    for row in monitoringGroup:
+    for row in rules:
         data.append(row['id_group'])
     pg_db.close()
     return data
