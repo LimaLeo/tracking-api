@@ -16,6 +16,7 @@ def product_create(_name, _link, _tag, _group_id):
     pg_db.close()
     return result
 
+
 def products_list(_group_id):
     data = []
     pg_db.connect()
@@ -56,6 +57,7 @@ def products_update(_id_product, _name="", _link="", _tag="", _group_id=""):
         pg_db.close()
     except(Exception):
         print("id não encontrado!")
+
 
 def products_get_by_id(_id_product):
     data = []
