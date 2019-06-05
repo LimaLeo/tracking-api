@@ -94,6 +94,15 @@ functions:
           cors: true
           private: true
 
+  getPriceByGroupId:
+    handler: src/functions/monitoring/get_price_by_group_id.get_price_by_group_id
+    events:
+      - http:
+          path: prices/monitoring
+          method: get
+          cors: true
+          private: true
+
   createProduct:
     handler: src/functions/products/create.create
     events:
