@@ -31,15 +31,17 @@ def prices_get_price_by_group_id(_group_id):
             Prices.date,
             Prices.value,
             Products.id_product,
+            Products.link,
             Products.name,
             MonitoringGroup.id_group,
             MonitoringGroup.name,
             MonitoringGroup.description
         )\
         .join(Products).join(MonitoringGroup)\
-            .where(Products.group_id == _group_id).dicts()
+        .where(Products.group_id == _group_id)\
+        .order_by(Prices.date).dicts()
     for row in prices:
-        row['date'] = row['date'].strftime("%m/%d/%Y, %H:%M:%S")
+        row['date'] = row['date'].strftime("%d/%m/%Y, %H:%M:%S")
         row['value'] = str(row['value'])
         data.append(row)
     pg_db.close()
